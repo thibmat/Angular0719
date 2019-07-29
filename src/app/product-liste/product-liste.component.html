@@ -4,7 +4,11 @@
 <p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'">Ce texte est en bleu</p>
 <button mat-button class="blue-bg" (click)="changeAdmin()">switch Admin</button>
 <ul>
-  <li>Puce 1</li>
-  <li>Puce 2</li>
-  <li>Puce 3</li>
+  <li *ngFor="let PRODUCT of PRODUCTS" >
+
+    {{ PRODUCT['name'] }}<button mat-button class="blue-bg" (click)="chooseProduct(PRODUCT)">Choisir</button>
+
+  </li>
+
 </ul>
+<app-produit-detail [product]="choosedProduct"></app-produit-detail>

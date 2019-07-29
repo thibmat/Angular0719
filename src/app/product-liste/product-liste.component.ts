@@ -29,6 +29,7 @@ export class ProductListeComponent implements OnInit {
    * Definition d'une propriété isAdmin
    */
   private isAdmin: boolean;
+  private choosedProduct: ProductListeComponent;
   /**
    * Initialisation des propriétés
    */
@@ -38,6 +39,10 @@ export class ProductListeComponent implements OnInit {
   }
   private changeAdmin(){
     this.isAdmin = !this.isAdmin;
+  }
+  private chooseProduct(product: ProductListeComponent):void
+  {
+    this.choosedProduct = product;
   }
   ngOnInit() {
   }
