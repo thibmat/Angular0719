@@ -1,0 +1,10 @@
+<a [href] = "url">Moteurs de recherche</a>
+
+<p [attr.contenteditable]="isAdmin">EDITEZ MOI !</p>
+<p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'">Ce texte est en bleu</p>
+<button mat-button class="blue-bg" (click)="changeAdmin()">switch Admin</button>
+<ul>
+  <li>Puce 1</li>
+  <li>Puce 2</li>
+  <li>Puce 3</li>
+</ul>
