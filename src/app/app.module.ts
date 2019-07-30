@@ -19,10 +19,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material';
+import {MatCardModule, MatSlider} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
+import { ProductShowComponent } from './product-show/product-show.component';
+import {MatSliderModule} from '@angular/material/slider';
+import { MoyennePipe } from './moyenne.pipe';
+
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import {MatRadioModule} from '@angular/material/radio';
     AppComponent,
     ProductListeComponent,
     NavbarComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductShowComponent,
+    MoyennePipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCardModule,
     MatInputModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,6 @@
+<ng-container *ngIf="product">
+  <h2>Détail d'un produit : {{product.name}}</h2>
+  <p>{{product.description}}</p>
+  <h3>Vote</h3>
+  <mat-slider #note min="1" max="5" step="1" value="1" thumbLabel tickInterval="1" (change)="recupNote(note.value)"></mat-slider>
+</ng-container>
