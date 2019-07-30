@@ -1,11 +1,18 @@
+// imports Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
+// Les composants
 import { AppComponent } from './app.component';
 import { ProductListeComponent } from './product-liste/product-liste.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
+
+// Les modules
+import { AppRoutingModule } from './app-routing.module';
+
+// Les imports d'Angular Material
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,14 +20,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material';
-import { ProduitDetailComponent } from './produit-detail/produit-detail.component';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListeComponent,
     NavbarComponent,
-    ProduitDetailComponent
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +42,10 @@ import { ProduitDetailComponent } from './produit-detail/produit-detail.componen
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
