@@ -20,7 +20,7 @@ export class ProductListeComponent implements OnInit {
   /**
    * Definition des classes CSS a appliquer
    */
-  public classesCss: object;
+  public classesCss: Object;
   public choosedProduct: Product;
   public averages: Array<Array<number>>;
   /**
@@ -54,7 +54,7 @@ export class ProductListeComponent implements OnInit {
   public onVoted(note: number){
     let index;
     const lgth = this.products.length;
-      for (let i=0; i<lgth ; i++){
+      for (let i = 0; i < lgth ; i++) {
         if(this.choosedProduct.name === this.products[i].name){
           index = i;
           break;

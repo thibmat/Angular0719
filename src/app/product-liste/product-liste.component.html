@@ -5,7 +5,6 @@
 <p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'">Ce texte est en bleu</p>
 <button mat-button class="blue-bg" (click)="changeAdmin()">switch Admin</button>
 
-
 <p [ngClass]="classesCss">Utilisation de ngClass</p>
 
   <p *ngIf="isAdmin; else publicContent">Contenu confidentiel</p>

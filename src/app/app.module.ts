@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Les composants
 import { AppComponent } from './app.component';
 import { ProductListeComponent } from './product-liste/product-liste.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 
 // Les modules
@@ -25,18 +24,15 @@ import {FormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import { ProductShowComponent } from './product-show/product-show.component';
 import {MatSliderModule} from '@angular/material/slider';
-import { MoyennePipe } from './moyenne.pipe';
-
-
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListeComponent,
-    NavbarComponent,
     ProductCreateComponent,
     ProductShowComponent,
-    MoyennePipe
+    HomeComponent
   ],
   imports: [
     BrowserModule,
