@@ -4,13 +4,18 @@ import {ProductListeComponent} from './product-liste/product-liste.component';
 import {ProductCreateComponent} from './product-create/product-create.component';
 import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {ProductShowComponent} from './product-show/product-show.component';
+import {ProductViewShowComponent} from './product-view-show/product-view-show.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'produits', component: ProductListeComponent},
-  {path: 'produits/creation', component: ProductCreateComponent},
-  {path: '**', component: NotFoundComponent}
+  {path: '', component: HomeComponent, data: {preload: true}},
+  {path: 'produits', component: ProductListeComponent, data: {preload: true}},
+  {path: 'produits/creation', component: ProductCreateComponent, data: {preload: true}},
+  {path: 'produits/:slug', component: ProductViewShowComponent, data: {preload: true}},
+  {path: 'produits/test', component: ProductViewShowComponent, data: {preload: true}},
+  {path: 'not-found', component: NotFoundComponent, data: {preload: true}},
+  {path: '**', component: NotFoundComponent, data: {preload: true}}
 ];
 
 @NgModule({

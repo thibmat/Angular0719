@@ -1,17 +1,4 @@
-li{
-  list-style-type: none;
-  display:inline-block;
-  width:100px;
-  height: 50px;
-  line-height:50px;
-  margin:5px;
-  padding:5px;
-  text-align: center;
-}
-li h2 a{
-  text-decoration: none;
-  color:black;
-}
+
 .sidenav-container {
   height: 100%;
 }
@@ -30,3 +17,9 @@ li h2 a{
   z-index: 1;
 }
 
+mat-nav-list {
+  display:flex;
+}
+mat-nav-list a{
+  color:white;
+}

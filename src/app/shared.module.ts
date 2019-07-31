@@ -5,7 +5,7 @@ import {
   MatCardModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatRadioModule,
+  MatListModule, MatMenuModule, MatRadioModule,
   MatSidenavModule, MatSliderModule,
   MatToolbarModule
 } from '@angular/material';
@@ -22,7 +22,8 @@ import {
     MatCardModule,
     MatInputModule,
     MatRadioModule,
-    MatSliderModule
+    MatSliderModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +35,8 @@ import {
     MatCardModule,
     MatInputModule,
     MatRadioModule,
-    MatSliderModule
+    MatSliderModule,
+    MatMenuModule
   ]
 })
 export class SharedModule { }

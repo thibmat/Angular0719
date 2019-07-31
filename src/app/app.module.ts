@@ -18,6 +18,7 @@ import { ProductShowComponent } from './product-show/product-show.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {SharedModule} from './shared.module';
+import { ProductViewShowComponent } from './product-view-show/product-view-show.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {SharedModule} from './shared.module';
     ProductCreateComponent,
     ProductShowComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProductViewShowComponent
   ],
   imports: [
     BrowserModule,

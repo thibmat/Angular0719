@@ -10,7 +10,8 @@ import {Product} from '../model/product';
 export class ProductShowComponent implements OnInit {
   @Input() product: Product;
   @Output () note = new EventEmitter<number>();
-  constructor() { }
+  constructor() {
+  }
   ngOnInit() {
   }
   public recupNote(value: number): void {

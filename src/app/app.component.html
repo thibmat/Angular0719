@@ -5,9 +5,9 @@
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Les produits</a>
-      <a mat-list-item href="#">La marque</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/produits">Les produits</a>
+      <a mat-list-item routerLink="/produits/creation">Creer un produit</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +20,18 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Angular8</span>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/">Home</a>
+        <a mat-list-item routerLink="/produits">Les produits</a>
+        <a mat-list-item routerLink="/produits/creation">Creer un produit</a>
+        <button mat-button [matMenuTriggerFor]="menu">Detail des produits</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/produits/hamac">Hamac</button>
+          <button mat-menu-item routerLink="/produits/parasol">Parasol</button>
+          <button mat-menu-item routerLink="/produits/ballon-de-volley">Ballon de volley</button>
+        </mat-menu>
+      </mat-nav-list>
+
     </mat-toolbar>
     <section class="container">
       <router-outlet></router-outlet>
