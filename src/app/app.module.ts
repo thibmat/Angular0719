@@ -13,18 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Les imports d'Angular Material
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import {MatCardModule, MatSlider} from '@angular/material';
-import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {MatRadioModule} from '@angular/material/radio';
 import { ProductShowComponent } from './product-show/product-show.component';
-import {MatSliderModule} from '@angular/material/slider';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {SharedModule} from './shared.module';
 
 @NgModule({
   declarations: [
@@ -32,23 +25,16 @@ import { HomeComponent } from './home/home.component';
     ProductListeComponent,
     ProductCreateComponent,
     ProductShowComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatInputModule,
     FormsModule,
-    MatRadioModule,
-    MatSliderModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
