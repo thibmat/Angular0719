@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { Router } from '@angular/router';
 import {CONST_PRODUCTS, Product} from '../model/product';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product-view-show',
@@ -10,28 +11,26 @@ import {CONST_PRODUCTS, Product} from '../model/product';
 })
 export class ProductViewShowComponent implements OnInit, DoCheck {
 
-  private products: Array<Product> = CONST_PRODUCTS;
-  private product: Product;
-  constructor(private route: ActivatedRoute, private router: Router) {
+  public products: Array<Product> = CONST_PRODUCTS;
+  public product: Product;
+  public slug: string;
+  constructor(private route: ActivatedRoute, private router: Router, private productservice: ProductService) {
+    this.slug = this.route.snapshot.paramMap.get('slug');
   }
   ngOnInit() {
-    const slug = this.route.snapshot.paramMap.get('slug');
-    this.getProduct(slug);
+    this.getProduct();
   }
-  ngDoCheck() {
-    const slug = this.route.snapshot.paramMap.get('slug');
-    if (this.product.slug !== slug ){
-      this.getProduct(slug);
+  ngDoCheck(): void {
+    const newSlug = this.route.snapshot.paramMap.get('slug');
+    if (this.slug !== newSlug) {
+      this.slug = newSlug;
+      this.getProduct();
+      if (!this.product) {
+        this.router.navigate(['not-found']);
+      }
     }
   }
-  private getProduct(slug: string): void {
-   this.products.forEach(product => {
-    if (product.slug === slug) {
-      this.product = product;
-    }
-    });
-    if (!this.product){
-      this.router.navigate(['/not-found']);
-    }
+  public getProduct() {
+    this.productservice.getProduct(this.slug).subscribe(elem => this.product = elem);
   }
 }

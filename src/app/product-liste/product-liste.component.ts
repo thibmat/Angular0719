@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CONST_PRODUCTS, Product} from '../model/product';
+import {Product} from '../model/product';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product-liste',
@@ -7,7 +8,7 @@ import {CONST_PRODUCTS, Product} from '../model/product';
   styleUrls: ['./product-liste.component.css']
 })
 export class ProductListeComponent implements OnInit {
-  public products: Array<Product> = CONST_PRODUCTS;
+  public products: Array<Product> = [];
   /**
    * Definition d'une propriété URL
    */
@@ -20,23 +21,16 @@ export class ProductListeComponent implements OnInit {
   /**
    * Definition des classes CSS a appliquer
    */
-  public classesCss: Object;
+  public classesCss: object;
   public choosedProduct: Product;
   public averages: Array<Array<number>>;
   /**
    * Initialisation des propriétés
    */
-  constructor() {
+  constructor(private productservice: ProductService) {
     this.url = 'https://www.ecosia.org';
     this.isAdmin = true;
     this.changeCssClasses();
-    // On initialise le tableau des notes
-    this.averages = [];
-    // 1. On crée autant d'index qu'il y a de produits
-    // 2. Dans chaque index on aura :
-    //    - L'ancienne somme des notes (par défaut 0)
-    //    - Le nombre de votes (par défaut 0)
-    this.products.forEach(elem => this.averages.push([0, 0]));
   }
   public changeAdmin(){
     this.isAdmin = !this.isAdmin;
@@ -72,5 +66,15 @@ export class ProductListeComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.productservice.getProducts().subscribe(products => {
+      this.products = products;
+      // On initialise le tableau des notes
+      this.averages = [];
+      // 1. On crée autant d'index qu'il y a de produits
+      // 2. Dans chaque index on aura :
+      //    - L'ancienne somme des notes (par défaut 0)
+      //    - Le nombre de votes (par défaut 0)
+      this.products.forEach(elem => this.averages.push([0, 0]));
+    });
   }
 }

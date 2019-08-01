@@ -24,11 +24,17 @@
         <a mat-list-item routerLink="/">Home</a>
         <a mat-list-item routerLink="/produits">Les produits</a>
         <a mat-list-item routerLink="/produits/creation">Creer un produit</a>
-        <button mat-button [matMenuTriggerFor]="menu">Detail des produits</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/produits/hamac">Hamac</button>
-          <button mat-menu-item routerLink="/produits/parasol">Parasol</button>
-          <button mat-menu-item routerLink="/produits/ballon-de-volley">Ballon de volley</button>
+        <button mat-button [matMenuTriggerFor]="menucat">Detail des produits par categories</button>
+        <mat-menu #menucat="matMenu">
+          <ng-container *ngFor="let category of categories">
+              <button mat-menu-item [matMenuTriggerFor]="sousmenu" routerLink="" >
+                {{category.name}}
+              </button>
+              <mat-menu #sousmenu="matMenu">
+                <a mat-list-item>TEST 1</a>
+                <a mat-list-item>TEST 2</a>
+              </mat-menu>
+          </ng-container>
         </mat-menu>
       </mat-nav-list>
 

@@ -1,12 +1,31 @@
 <section class="container">
 <h2 class="example-h2">Création d'un produit</h2>
 <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input  [(ngModel)]="product.name" name="name" matInput placeholder="Nom" value="">
+  <mat-form-field>
+    <label>
+      <input [(ngModel)]="product.name" name="name" matInput placeholder="Nom">
+    </label>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <textarea matInput [(ngModel)]="product.description" name="description" placeholder="Description"></textarea>
+  <mat-form-field>
+    <label>
+      <textarea [(ngModel)]="product.description" name="description" matInput placeholder="Description"></textarea>
+    </label>
+  </mat-form-field>
+
+  <mat-form-field>
+    <label>
+      <input [(ngModel)]="product.price" name="price" matInput placeholder="Prix" type="number" step="0.01" min="0">
+    </label>
+  </mat-form-field>
+
+  <mat-slide-toggle [checked]="product.isPublished" (change)="changeIsPublished($event)"
+  >Le produit doit-il être publié ?</mat-slide-toggle>
+
+  <mat-form-field>
+    <label>
+      <input [(ngModel)]="product.imageName" name="imageName" matInput placeholder="Nom de l'image">
+    </label>
   </mat-form-field>
   <button mat-button class="blue-bg">Créer</button>
   <p>{{ product | json }}</p>

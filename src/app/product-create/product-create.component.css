@@ -33,3 +33,6 @@
 .mat-slider-vertical {
   height: 300px;
 }
+mat-form-field {
+  width: 100%;
+}
