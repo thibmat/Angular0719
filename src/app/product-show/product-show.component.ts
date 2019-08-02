@@ -1,5 +1,6 @@
 import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {Product} from '../model/product';
+import {ProductService} from "../product.service";
 
 
 @Component({
@@ -10,7 +11,7 @@ import {Product} from '../model/product';
 export class ProductShowComponent implements OnInit {
   @Input() product: Product;
   @Output () note = new EventEmitter<number>();
-  constructor() {
+  constructor(private productservice: ProductService) {
   }
   ngOnInit() {
   }

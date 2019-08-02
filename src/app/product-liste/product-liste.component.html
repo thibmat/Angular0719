@@ -1,27 +1,30 @@
 <section class="container">
-<a [href] = "url">Moteurs de recherche</a>
-
-<p [attr.contenteditable]="isAdmin">EDITEZ MOI !</p>
-<p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'">Ce texte est en bleu</p>
-<button mat-button class="blue-bg" (click)="changeAdmin()">switch Admin</button>
-
-<p [ngClass]="classesCss">Utilisation de ngClass</p>
-
-  <p *ngIf="isAdmin; else publicContent">Contenu confidentiel</p>
-  <ng-template #publicContent>
-    <p>Contenu public</p>
-  </ng-template>
-
-    <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      class="example-radio-group">
-      <mat-radio-button
-        *ngFor="let product of products, index as i"
-        [value]="product.name"
-        class="example-radio-button"
-      (change)="chooseProduct(product)">
-        {{product.name}} - ({{getAverage(i)}})
-      </mat-radio-button>
-    </mat-radio-group>
-  <app-product-show [product]="choosedProduct" (note)="onVoted($event)"></app-product-show>
+  <div>
+    <mat-grid-list cols="2">
+      <mat-grid-tile
+        *ngFor="let product of products; index as i"
+      >
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>Note : {{getAverage(i)}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{product.description}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button
+                    (click)="choosedProduct = product"
+            >Voter</button>
+            <button mat-button>share</button>
+            <button mat-button color="warn" (click)="deleteProduct(product)">Supprimer ce produit</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <app-product-show
+    [product]="choosedProduct"
+    (note)="onVoted($event)"
+  ></app-product-show>
 </section>

@@ -6,6 +6,7 @@ import {HomeComponent} from './home/home.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {ProductShowComponent} from './product-show/product-show.component';
 import {ProductViewShowComponent} from './product-view-show/product-view-show.component';
+import {ProductUpdateComponent} from "./product-update/product-update.component";
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: 'produits', component: ProductListeComponent, data: {preload: true}},
   {path: 'produits/creation', component: ProductCreateComponent, data: {preload: true}},
   {path: 'produits/:slug', component: ProductViewShowComponent, data: {preload: true}},
-  {path: 'produits/test', component: ProductViewShowComponent, data: {preload: true}},
+  {path: 'produits/modification/:id', component: ProductUpdateComponent, data: {preload: true}},
   {path: 'not-found', component: NotFoundComponent, data: {preload: true}},
   {path: '**', component: NotFoundComponent, data: {preload: true}}
 ];

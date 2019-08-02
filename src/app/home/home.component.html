@@ -20,4 +20,16 @@
       <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card>
+  <a [href] = "url">Moteurs de recherche</a>
+
+  <p [attr.contenteditable]="isAdmin">EDITEZ MOI !</p>
+  <p [class]="(isAdmin) ? 'teal-text' : 'blue-bg'">Ce texte est en bleu</p>
+  <button mat-button class="blue-bg" (click)="changeAdmin()">switch Admin</button>
+
+  <p [ngClass]="classesCss">Utilisation de ngClass</p>
+
+  <p *ngIf="isAdmin; else publicContent">Contenu confidentiel</p>
+  <ng-template #publicContent>
+    <p>Contenu public</p>
+  </ng-template>
 </section>

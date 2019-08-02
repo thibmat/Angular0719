@@ -18,6 +18,7 @@ import { ProductViewShowComponent } from './product-view-show/product-view-show.
 // Les modules
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule} from './shared.module';
+import { ProductUpdateComponent } from './product-update/product-update.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SharedModule} from './shared.module';
     ProductShowComponent,
     HomeComponent,
     NotFoundComponent,
-    ProductViewShowComponent
+    ProductViewShowComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { SharedModule} from './shared.module';
     FormsModule,
     SharedModule,
     HttpClientModule,
+
 
   ],
   providers: [],

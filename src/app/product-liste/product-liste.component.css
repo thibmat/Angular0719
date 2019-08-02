@@ -1,15 +1,22 @@
-.teal-text{
-  color:teal;
-}
-.blue-bg{
-  background-color:cadetblue;
-  margin:10px;
-}
-.example-radio-group {
+section {
   display: flex;
-  flex-direction: column;
-  margin: 15px 0;
 }
-.example-radio-button {
-  margin: 5px;
+section div:first-of-type {
+  height: calc(100vh - 146px) !important;
+  overflow: auto;
+  width: 100%;
+}
+
+section mat-grid-list {
+  flex: 2;
+
+}
+section app-product-show {
+  flex: 1;
+  min-width: 250px;
+}
+
+section mat-card {
+  margin: 0.75rem;
+  width: 100%;
 }

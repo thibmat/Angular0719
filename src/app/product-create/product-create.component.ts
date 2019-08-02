@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../model/product';
 import {MatSlideToggleChange} from '@angular/material';
+import {ProductService} from "../product.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-create',
@@ -14,7 +16,7 @@ export class ProductCreateComponent implements OnInit {
    */
   public product: Product;
 
-  constructor() {
+  constructor(private productservice: ProductService, private router: Router) {
     this.product = new Product();
   }
 
@@ -25,7 +27,12 @@ export class ProductCreateComponent implements OnInit {
    * Envoi du produit à l'API pour le sauvegarder
    */
   public sendProduct(): void {
-    this.product.createdAt = new Date();
+    this.productservice.create(this.product).subscribe(datas => {
+      if (datas.message === 'Produit bien créé !') {
+        console.log(datas.message);
+        this.router.navigate(['/produits/' + this.product.slug]);
+      }
+    });
   }
 
   changeIsPublished($event: MatSlideToggleChange) {

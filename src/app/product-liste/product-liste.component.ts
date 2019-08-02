@@ -9,38 +9,13 @@ import {ProductService} from '../product.service';
 })
 export class ProductListeComponent implements OnInit {
   public products: Array<Product> = [];
-  /**
-   * Definition d'une propriété URL
-   */
-  public url: string;
-
-  /**
-   * Definition d'une propriété isAdmin
-   */
-  public isAdmin: boolean;
-  /**
-   * Definition des classes CSS a appliquer
-   */
-  public classesCss: object;
   public choosedProduct: Product;
   public averages: Array<Array<number>>;
   /**
    * Initialisation des propriétés
    */
   constructor(private productservice: ProductService) {
-    this.url = 'https://www.ecosia.org';
-    this.isAdmin = true;
-    this.changeCssClasses();
-  }
-  public changeAdmin(){
-    this.isAdmin = !this.isAdmin;
-    this.changeCssClasses();
-  }
-  private changeCssClasses() {
-    this.classesCss = {
-      'blue-bg' : this.isAdmin,
-      'teal-text': !this.isAdmin
-    };
+
   }
   public chooseProduct(product: Product): void {
     this.choosedProduct = product;
@@ -76,5 +51,16 @@ export class ProductListeComponent implements OnInit {
       //    - Le nombre de votes (par défaut 0)
       this.products.forEach(elem => this.averages.push([0, 0]));
     });
+  }
+  deleteProduct(product: Product) {
+    this.productservice.delete(product.id).subscribe(
+      datas=>{
+        console.log(datas.message);
+        //On supprime le product dans le tableau local
+        const index = this.products.findIndex(elem => elem.id === product.id);
+        console.log(index);
+        this.products.splice(index, 1);
+      }
+    );
   }
 }

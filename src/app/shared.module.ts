@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule, MatMenuModule, MatRadioModule,
@@ -24,7 +24,8 @@ import {
     MatRadioModule,
     MatSliderModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatGridListModule,
 
   ],
   exports: [
@@ -39,7 +40,8 @@ import {
     MatRadioModule,
     MatSliderModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatGridListModule,
   ]
 })
 export class SharedModule { }

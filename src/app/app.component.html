@@ -26,13 +26,10 @@
         <a mat-list-item routerLink="/produits/creation">Creer un produit</a>
         <button mat-button [matMenuTriggerFor]="menucat">Detail des produits par categories</button>
         <mat-menu #menucat="matMenu">
-          <ng-container *ngFor="let category of categories">
-              <button mat-menu-item [matMenuTriggerFor]="sousmenu" routerLink="" >
-                {{category.name}}
-              </button>
-              <mat-menu #sousmenu="matMenu">
-                <a mat-list-item>TEST 1</a>
-                <a mat-list-item>TEST 2</a>
+          <ng-container *ngFor="let category of categories, index as i">
+              <button mat-menu-item [matMenuTriggerFor]="submenu">{{category.name}}</button>
+              <mat-menu #submenu="matMenu">
+                <button *ngFor="let product of menu[category.id]" mat-menu-item>{{ product.name }}</button>
               </mat-menu>
           </ng-container>
         </mat-menu>
