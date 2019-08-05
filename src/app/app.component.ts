@@ -4,6 +4,7 @@ import {  BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {  map, share} from 'rxjs/operators';
 import {  ProductService} from './product.service';
 import {Product} from './model/product';
+import {Category} from './model/category';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit{
       map(result => result.matches),
       share()
     );
-  public categories: object[] = [];
+  public categories: Category[] = [];
   public menu = [];
 
   constructor(private breakpointObserver: BreakpointObserver, private productservice: ProductService) {

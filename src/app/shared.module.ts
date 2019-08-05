@@ -25,7 +25,7 @@ import {
     MatSliderModule,
     MatMenuModule,
     MatSlideToggleModule,
-    MatGridListModule,
+    MatGridListModule
 
   ],
   exports: [
@@ -41,7 +41,7 @@ import {
     MatSliderModule,
     MatMenuModule,
     MatSlideToggleModule,
-    MatGridListModule,
+    MatGridListModule
   ]
 })
 export class SharedModule { }

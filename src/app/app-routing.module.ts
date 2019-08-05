@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'produits', component: ProductListeComponent, data: {preload: true}},
   {path: 'produits/creation', component: ProductCreateComponent, data: {preload: true}},
   {path: 'produits/:slug', component: ProductViewShowComponent, data: {preload: true}},
-  {path: 'produits/modification/:id', component: ProductUpdateComponent, data: {preload: true}},
+  {path: 'produits/edit/:slug', component: ProductUpdateComponent, data: {preload: true}},
   {path: 'not-found', component: NotFoundComponent, data: {preload: true}},
   {path: '**', component: NotFoundComponent, data: {preload: true}}
 ];

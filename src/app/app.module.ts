@@ -39,8 +39,6 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
     FormsModule,
     SharedModule,
     HttpClientModule,
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

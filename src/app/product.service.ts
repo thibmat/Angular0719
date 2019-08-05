@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {Observable, of, throwError} from 'rxjs';
 import { Product} from './model/product';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
-import {ResponseApi} from "./model/response-api";
-
+import {catchError, map, tap} from 'rxjs/operators';
+import {ResponseApi} from './model/response-api';
+import {Category} from './model/category';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
   private apiUrl = 'http://apiRest/products';
   private apiCat = 'http://apiRest/categories';
@@ -19,7 +20,8 @@ export class ProductService {
       'Content-Type': 'application/json'
     })
   };
-  constructor(private http: HttpClient){
+
+  constructor(private http: HttpClient) {
   }
   /**
    * Recupere les produits de l'API
@@ -49,7 +51,7 @@ export class ProductService {
   public getProduct(slug: string): Observable<Product | null> {
     return this.http.get<Product>(this.apiUrl + '/' + slug)
       .pipe(
-        tap(product=>console.log(product.name)),
+        tap(product => console.log(product.name)),
         catchError((error: HttpErrorResponse) => {
           if(error.status === 404){
             return of(null);
@@ -58,14 +60,14 @@ export class ProductService {
           }
         }));
   }
-  public getCategories(): Observable<object[]> {
-   return this.http.get<object[]>(this.apiCat)
+  public getCategories(): Observable<Category[]> {
+   return this.http.get<Category[]>(this.apiCat)
      .pipe(
        tap(),
        catchError(this.handleError));
   }
-  public getProductsByCat(idCat: number): Observable<object[]> {
-    return this.http.get<object[]>(this.apiProdByCat + '/' + idCat);
+  public getProductsByCat(idCat: number): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiProdByCat + '/' + idCat);
   }
 
   /**
@@ -73,15 +75,29 @@ export class ProductService {
    * @param product
    */
   create(product: Product): Observable<ResponseApi> {
-    product.updateSlug();
     return this.http.post<ResponseApi>(this.apiUrl, product, this.JSONHeaders).pipe(
-      tap(datas=> console.log('Retour API (creation produit) :' + datas))
+        tap(datas => console.log('Retour API (creation produit)')),
+        tap(datas => console.log(datas))
     );
   }
+  /**
+   * Envoie l'id du produit à l'API pour suppression
+   * @param id du produit
+   */
   delete(id: number): Observable<ResponseApi> {
     return this.http.delete<ResponseApi>(this.apiUrl + '/' + id, this.JSONHeaders).pipe(
-      tap(datas=> console.log('Retour API (Suppression produit) :')),
-      tap(datas=>console.log(datas))
+      tap(datas => console.log('Retour API (Suppression produit) :')),
+      tap(datas => console.log(datas))
+    );
+  }
+  /**
+   * Envoie le produit à l'API pour la modification en BDD
+   * @param product
+   */
+  update(product: Product): Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(this.apiUrl, product, this.JSONHeaders).pipe(
+        tap(datas => console.log('Retour API (creation produit)')),
+        tap(datas => console.log(datas))
     );
   }
 }

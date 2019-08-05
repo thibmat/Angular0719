@@ -1,5 +1,7 @@
-<section class="container">
-  <h1>Création d'un produit</h1>
+<section class="container" *ngIf="product">
+  <h1>{{action.value2}} d'un produit</h1>
+
+
   <form class="example-form" (ngSubmit)="sendProduct()">
     <mat-form-field>
       <label>
@@ -28,8 +30,8 @@
       </label>
     </mat-form-field>
 
-    <button mat-button class="blue-bg">Créer</button>
-  </form>
+    <button mat-raised-button [color]="(action.isUpdate) ? 'warn' : 'primary'">{{action.value}} le produit</button>
 
+  </form>
   <p>{{ product | json }}</p>
 </section>

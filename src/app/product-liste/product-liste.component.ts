@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from '../model/product';
-import {ProductService} from '../product.service';
+import { Product } from '../model/product';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-liste',
@@ -23,12 +23,12 @@ export class ProductListeComponent implements OnInit {
   public onVoted(note: number){
     let index;
     const lgth = this.products.length;
-      for (let i = 0; i < lgth ; i++) {
-        if(this.choosedProduct.name === this.products[i].name){
-          index = i;
-          break;
-        }
+    for (let i = 0; i < lgth ; i++) {
+      if(this.choosedProduct.name === this.products[i].name){
+        index = i;
+        break;
       }
+    }
     this.averages[index][0] += note;
     this.averages[index][1] ++;
     console.dir( this.averages[index]);
